@@ -1,0 +1,18 @@
+[
+    {
+        "buscar_cliente_Id": "GET /clientes/:idCliente",
+        "listar_clientes": "GET /clientes",
+        "cadastrar_cliente": "POST /clientes/cadastrar",
+        "atualizar_cliente": "PUT /clientes/atualizar",
+        "deletar_cliente": "DELETE /clientes/deletar/:idCliente"
+    },
+    {   "body": "metódos e inserções via body",
+        "cadastrar_cliente": "nome: String, telefone: String, email: String",
+        "atualizar_cliente": "idCliente: Int, nome: String, telefone: String, email: String"
+    },
+    {
+        "params": "metódos e inserções via parametro",
+        "buscar_cliente_id": "idCliente",
+        "deletar_cliente": "idCliente"
+    }
+]
