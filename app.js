@@ -19,6 +19,26 @@ app.delete('/clientes/deletar/:idCliente', async (req, res) => clienteController
 
 app.put('/clientes/atualizar', async (req, res) => clienteController.editarCliente(req, res));
 
+app.get('/vendedores/:idVendedor', async (req, res) => {
+  try {
+    const idVendedor = req.params.idVendedor;
+    const response = await axios.get(`URL_DA_API_EXTERNAR/vendedores/${idVendedor}`);
+    
+    // Verifica se a resposta tem dados
+    if (response.data) {
+      const nomeVendedor = response.data.nome;
+
+      console.log(`Nome do vendedor: ${nomeVendedor}`);
+      res.status(200).json(response.data);
+    } else {
+      res.status(404).json({ error: 'Vendedor não encontrado' });
+    }
+  } catch (error) {
+    console.error('Erro ao obter dados do vendedor:', error.message);
+    res.status(500).json({ error: 'Erro ao obter dados do vendedor' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Servidor está rodando na porta ${port}`);
 });
